@@ -218,6 +218,13 @@ export default function HomeScreen() {
     outputRange: ['0deg', '180deg'],
   });
 
+  // Cam gövde beyaz zeminde kaybolmasın: açık temada camı koyu tonlarla,
+  // koyu temada beyaz tonlarla çiziyoruz. Aksi hâlde açık temada kum saatinin
+  // ampul biçimi tamamen görünmez oluyor, geriye sadece pirinç çerçeve kalıyordu.
+  const glassStroke = isDark ? 'rgba(255,255,255,0.5)' : 'rgba(87,61,5,0.55)';
+  const glassFillTop = isDark ? 'rgba(255,255,255,0.18)' : 'rgba(87,61,5,0.10)';
+  const glassFillBottom = isDark ? 'rgba(255,255,255,0.04)' : 'rgba(87,61,5,0.03)';
+
   return (
     <KeyboardAvoidingView
       style={[styles.container, { backgroundColor: isDark ? '#000000' : '#ffffff' }]}
@@ -361,8 +368,8 @@ export default function HomeScreen() {
 
                   {/* Cam Şeffaf Arka Plan */}
                   <LinearGradient id="glassBg" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <Stop offset="0%" stopColor="rgba(255,255,255,0.18)" />
-                    <Stop offset="100%" stopColor="rgba(255,255,255,0.04)" />
+                    <Stop offset="0%" stopColor={glassFillTop} />
+                    <Stop offset="100%" stopColor={glassFillBottom} />
                   </LinearGradient>
                 </Defs>
 
@@ -377,7 +384,7 @@ export default function HomeScreen() {
                       C ${CENTER_X + 14} ${NECK_Y - 18}, ${CENTER_X + HALF_WIDTH} ${TOP_Y + 55}, ${CENTER_X + HALF_WIDTH} ${TOP_Y}
                       Z`}
                   fill="url(#glassBg)"
-                  stroke="rgba(255,255,255,0.5)"
+                  stroke={glassStroke}
                   strokeWidth={2}
                 />
                 <Path
@@ -386,7 +393,7 @@ export default function HomeScreen() {
                       C ${CENTER_X + 14} ${NECK_Y + 18}, ${CENTER_X + HALF_WIDTH} ${BOTTOM_Y - 55}, ${CENTER_X + HALF_WIDTH} ${BOTTOM_Y}
                       Z`}
                   fill="url(#glassBg)"
-                  stroke="rgba(255,255,255,0.5)"
+                  stroke={glassStroke}
                   strokeWidth={2}
                 />
 
@@ -456,7 +463,7 @@ export default function HomeScreen() {
 
             {/* Silahlı Oyun & Mutlu Gamer Odak Rozeti */}
             <View style={styles.gamingBadgeRow}>
-              <Text style={styles.gamingBadgeText}>🎯 ODAKLANMA & SİLAHLI OYUN MODU 🎮 🏆 🛡️</Text>
+              <Text style={styles.gamingBadgeText}>🎯 ODAKLANMA MODU 🎮 🏆</Text>
             </View>
 
             {/* Dijital Sayaç Metni */}

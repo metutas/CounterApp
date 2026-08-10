@@ -8,8 +8,6 @@ import { getAdMob } from './admob';
 // hesaplayan kodun da patlamaması gerekiyor.
 const FALLBACK_TEST_BANNER_ID = 'ca-app-pub-3940256099942544/6300978111';
 
-// AdMob hesabın açılıp gerçek Ad Unit ID'lerin oluşunca sadece bu iki satırı
-// kendi ID'lerinle değiştir — geri kalan kod hiç dokunmadan çalışmaya devam eder.
 // ÖNEMLİ: Geliştirme/test sırasında ASLA gerçek ID kullanma — kendi reklamına
 // yanlışlıkla tıklamak AdMob hesabını askıya aldırabilir. __DEV__ true iken
 // (Metro'dan çalıştırırken) her zaman Google'ın resmi test ID'si kullanılır.
@@ -24,8 +22,11 @@ export function getBannerAdUnitId(): string {
 
   return (
     Platform.select({
-      android: 'ca-app-pub-XXXXXXXXXXXXXXXX/XXXXXXXXXX', // TODO: gerçek Android banner Ad Unit ID
-      ios: 'ca-app-pub-XXXXXXXXXXXXXXXX/XXXXXXXXXX', // TODO: gerçek iOS banner Ad Unit ID
+      // AdMob → CounterApp (Android) → "Sayac Alt Banner"
+      android: 'ca-app-pub-1463142731660300/5887904422',
+      // iOS için henüz AdMob uygulaması oluşturulmadı. Gerçek ID gelene kadar test
+      // reklamı gösteriyoruz: geçersiz bir ID kullanmak yerine bu daha güvenli.
+      ios: testBannerId(),
     }) ?? testBannerId()
   );
 }

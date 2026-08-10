@@ -23,8 +23,10 @@
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
       "permissions": [
-        "android.permission.RECORD_AUDIO",
         "android.permission.MODIFY_AUDIO_SETTINGS"
+      ],
+      "blockedPermissions": [
+        "android.permission.RECORD_AUDIO"
       ]
     },
     "web": {
@@ -45,7 +47,12 @@
           }
         }
       ],
-      "expo-audio",
+      [
+        "expo-audio",
+        {
+          "recordAudioAndroid": false
+        }
+      ],
       [
         "expo-notifications",
         {
@@ -66,7 +73,7 @@
       [
         "react-native-google-mobile-ads",
         {
-          "androidAppId": "ca-app-pub-3940256099942544~3347511713",
+          "androidAppId": "ca-app-pub-1463142731660300~8653668566",
           "iosAppId": "ca-app-pub-3940256099942544~1458002511"
         }
       ]
