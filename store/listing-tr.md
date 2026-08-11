@@ -7,10 +7,10 @@ Play Console → Ana mağaza kaydı bölümündeki alanlara birebir kopyalanacak
 ## Uygulama adı (en fazla 30 karakter)
 
 ```
-Sayaç & Alarm: Odak Zamanı
+Odak: Pomodoro & Ders Takibi
 ```
 
-_26 karakter. Alternatif: `CounterApp: Sayaç ve Alarm` (26 karakter)._
+_28 karakter. `app.json` içindeki `name` alanıyla aynı — telefonun ana ekranında görünen isim de budur._
 
 ---
 

@@ -26,23 +26,48 @@ export default function TabLayout() {
           paddingBottom: Platform.OS === 'ios' ? 28 : 10,
           paddingTop: 8,
         },
+        // 5 sekme yan yana sığsın diye etiket/ikon biraz küçültüldü.
         tabBarLabelStyle: {
-          fontSize: 12,
+          fontSize: 10,
           fontWeight: '700',
+        },
+        tabBarItemStyle: {
+          paddingHorizontal: 0,
         },
       }}>
       <Tabs.Screen
         name="index"
         options={{
           title: 'Sayaç',
-          tabBarIcon: ({ color }) => <IconSymbol size={26} name="hourglass" color={color} />,
+          tabBarIcon: ({ color }) => <IconSymbol size={24} name="hourglass" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="pomodoro"
+        options={{
+          title: 'Pomodoro',
+          tabBarIcon: ({ color }) => <IconSymbol size={24} name="timer" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="tasks"
+        options={{
+          title: 'Görevler',
+          tabBarIcon: ({ color }) => <IconSymbol size={24} name="checklist" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="stats"
+        options={{
+          title: 'İstatistik',
+          tabBarIcon: ({ color }) => <IconSymbol size={24} name="chart.bar.fill" color={color} />,
         }}
       />
       <Tabs.Screen
         name="alarm"
         options={{
           title: 'Alarmlar',
-          tabBarIcon: ({ color }) => <IconSymbol size={26} name="alarm" color={color} />,
+          tabBarIcon: ({ color }) => <IconSymbol size={24} name="alarm" color={color} />,
         }}
       />
     </Tabs>

@@ -20,6 +20,9 @@ const MAPPING = {
   'chevron.right': 'chevron-right',
   'hourglass': 'hourglass-empty',
   'alarm': 'alarm',
+  'timer': 'timer',
+  'checklist': 'checklist',
+  'chart.bar.fill': 'bar-chart',
 } as IconMapping;
 
 /**

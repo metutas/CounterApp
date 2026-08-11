@@ -67,10 +67,12 @@ $grey = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(2
 # Turkce karakterler: bu .ps1 ANSI okunabildigi icin kod noktasindan uretiliyor
 $cCedil = [char]0x00E7  # c
 $gBreve = [char]0x011F  # g
-$subtitle = "Saya${cCedil}, Alarm ve Odaklanma Sesleri"
+$subtitle = "Pomodoro, Ders Takibi ve Odak Sesleri"
 $tagline = "Ya${gBreve}mur - Dalga - Orman - Odak"
 
-$g.DrawString('CounterApp', $titleFont, $white, 392, 158)
+# Not: Tam ad (28 karakter) 54px punto ile 1024px genisligi asiyor; gorselde
+# kisa marka adi kullanilip devami alt basliga birakiliyor.
+$g.DrawString('Odak', $titleFont, $white, 392, 158)
 $g.DrawString($subtitle, $subFont, $grey, 396, 232)
 
 # Altin vurgu cizgisi

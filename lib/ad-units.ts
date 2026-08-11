@@ -15,10 +15,19 @@ function testBannerId(): string {
   return getAdMob()?.TestIds.BANNER ?? FALLBACK_TEST_BANNER_ID;
 }
 
+// __DEV__ tek başına yetmiyor: EAS'ın "development" ve "preview" profilleri de release
+// modunda derlendiği için __DEV__ orada false oluyor ve gerçek reklamlar dönüyordu.
+// Bu build'ler tanıdıklara test amaçlı dağıtıldığından tıklanma riski yüksek; bu yüzden
+// eas.json'da bu profillere EXPO_PUBLIC_USE_TEST_ADS=1 tanımlandı (derleme anında koda
+// gömülür). Sadece "production" profilinde tanımsız kalır ve gerçek kimlikler devreye girer.
+function useTestAds(): boolean {
+  return __DEV__ || process.env.EXPO_PUBLIC_USE_TEST_ADS === '1';
+}
+
 // Sabit export yerine fonksiyon: modül seviyesinde TestIds okumak, paketi import etmeyi
 // zorlar ve native modül yokken uygulamayı açılışta çökertirdi.
 export function getBannerAdUnitId(): string {
-  if (__DEV__) return testBannerId();
+  if (useTestAds()) return testBannerId();
 
   return (
     Platform.select({

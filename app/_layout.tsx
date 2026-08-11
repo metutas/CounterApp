@@ -10,6 +10,7 @@ import { AlarmRingingModal, RingingAlarmData } from '@/components/alarm-ringing-
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { initializeAds } from '@/lib/ads';
 import { registerAlarmActionHandler, subscribeToAlarmTrigger } from '@/lib/notifications';
+import { StudyProvider } from '@/lib/study-store';
 import { ThemePreferenceProvider } from '@/lib/theme-preference';
 
 // Splash ekranının takılmasını önlemek için otomatik gizlemeyi devre dışı bırakmıyoruz,
@@ -31,7 +32,11 @@ export default function RootLayout() {
   // navigasyon teması, sekmeler ve ekranlar aynı değeri okusun.
   return (
     <ThemePreferenceProvider>
-      <RootLayoutNav />
+      {/* Ders/görev verisi de en üstte sağlanıyor: Pomodoro, Görevler ve İstatistik
+          sekmeleri aynı durumu paylaşsın (sekme değişince veri kaybolmasın). */}
+      <StudyProvider>
+        <RootLayoutNav />
+      </StudyProvider>
     </ThemePreferenceProvider>
   );
 }
