@@ -1,50 +1,55 @@
-# Welcome to your Expo app 👋
+# ⏳ Odak: Pomodoro & Ders Takibi
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Ders çalışmayı ve odaklanmayı kolaylaştırmak için geliştirilmiş, [Expo](https://expo.dev) (React Native) tabanlı bir mobil uygulama. Sayaç, Pomodoro tekniği, görev listesi, istatistikler ve alarmları tek bir uygulamada bir araya getirir.
 
-## Get started
+## ✨ Özellikler
 
-1. Install dependencies
+- **Sayaç** — Geri sayım / kronometre ile odak seansları başlatma.
+- **Pomodoro** — Klasik Pomodoro tekniğiyle çalışma/mola döngüleri, günlük hedef takibi.
+- **Görevler** — Derslere göre gruplanmış çalışma görevleri; ekleme, tamamlama, filtreleme.
+- **İstatistikler** — Çalışma sürelerinin ve tamamlanan pomodoroların özet görünümü.
+- **Alarmlar** — Özelleştirilebilir alarm kurma, erteleme (snooze) ve zil sesi teması seçimi.
+- **Ses temaları** — Yağmur, deniz dalgası, orman, odaklanma frekansı gibi ortam sesleri ile klasik/dijital/melodik alarm sesleri arasından seçim.
+- **Tema tercihi** — Otomatik / Açık / Koyu tema desteği.
+- **Reklamlar** — Google AdMob entegrasyonu (react-native-google-mobile-ads).
+
+## 🚀 Başlarken
+
+1. Bağımlılıkları kur:
 
    ```bash
    npm install
    ```
 
-2. Start the app
+2. Uygulamayı başlat:
 
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+   > **Not:** Bu proje `expo-notifications`, `react-native-google-mobile-ads` gibi native modüller kullandığı için standart **Expo Go** ile çalışmaz. Bir [development build](https://docs.expo.dev/develop/development-builds/introduction/) (`npx expo run:android` / `npx expo run:ios` veya EAS Build) ile çalıştırılması gerekir.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 🛠️ Kullanılan teknolojiler
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- [Expo](https://docs.expo.dev/versions/v54.0.0/) SDK 54 (React Native, yeni mimari aktif)
+- [Expo Router](https://docs.expo.dev/router/introduction/) — dosya tabanlı gezinme
+- `expo-notifications` — yerel bildirimler ve alarm zamanlama
+- `expo-audio` — ses çalma
+- `react-native-google-mobile-ads` — reklamlar
+- `@react-native-async-storage/async-storage` — yerel veri saklama
 
-## Get a fresh project
+## 📁 Proje yapısı
 
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+app/
+  (tabs)/        # Sayaç, Pomodoro, Görevler, İstatistik, Alarmlar sekmeleri
+  _layout.tsx    # Kök layout (tema, veri sağlayıcıları, alarm modalı)
+components/      # Paylaşılan UI bileşenleri
+lib/             # İş mantığı: bildirimler, ses üretimi, tema/veri sağlayıcıları
+assets/          # İkonlar, sesler, görseller
+scripts/         # Yardımcı build script'leri (ör. ses varlıklarını üretme)
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 📄 Lisans
 
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Bu proje kişisel/özel kullanım amaçlıdır.
