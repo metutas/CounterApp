@@ -4,6 +4,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import { LogBox } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import 'react-native-reanimated';
 
 import { AlarmRingingModal, RingingAlarmData } from '@/components/alarm-ringing-modal';
@@ -31,13 +32,19 @@ export default function RootLayout() {
   // Tema tercihi (Otomatik / Açık / Koyu) tüm ağacın en üstünde sağlanıyor ki
   // navigasyon teması, sekmeler ve ekranlar aynı değeri okusun.
   return (
-    <ThemePreferenceProvider>
-      {/* Ders/görev verisi de en üstte sağlanıyor: Pomodoro, Görevler ve İstatistik
-          sekmeleri aynı durumu paylaşsın (sekme değişince veri kaybolmasın). */}
-      <StudyProvider>
-        <RootLayoutNav />
-      </StudyProvider>
-    </ThemePreferenceProvider>
+    // SafeAreaProvider en dışta olmalı: (tabs)/_layout.tsx içindeki
+    // useSafeAreaInsets() bu sağlayıcı olmadan gerçek alt boşluğu (Xiaomi gibi
+    // cihazlardaki büyük gezinme çubuğu dahil) okuyamıyor ve tab bar sistem
+    // gezinme tuşlarının altında kalıp onlarla çakışıyordu.
+    <SafeAreaProvider>
+      <ThemePreferenceProvider>
+        {/* Ders/görev verisi de en üstte sağlanıyor: Pomodoro, Görevler ve İstatistik
+            sekmeleri aynı durumu paylaşsın (sekme değişince veri kaybolmasın). */}
+        <StudyProvider>
+          <RootLayoutNav />
+        </StudyProvider>
+      </ThemePreferenceProvider>
+    </SafeAreaProvider>
   );
 }
 
